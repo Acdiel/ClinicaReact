@@ -1,0 +1,170 @@
+/* VARIABLES */
+
+$letra-navbar: 'Secular One', sans-serif;
+$burdeo: #641c34;
+$burdeo-claro: #9d1b46;
+$gris:#ccc;
+$letra-contacto: 'Poppins', sans-serif;
+$celeste: #E6F5F5;
+
+/* BARRA DE NAVEGACION */
+
+.nav-link{
+    font-family: $letra-navbar;
+}
+
+#barraprincipal{
+    margin-left: 60px !important;
+    border-bottom: 2px solid transparent !important;
+    transition: all .55s ease;
+  }
+  
+  #barraprincipal:hover{
+   border-bottom: 2px solid $burdeo !important;
+  
+  }
+
+/* ANIMACION DROPDOWN MENU*/
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  min-width: 250px;
+  text-align: left;
+  padding-top: 20px;
+  box-shadow: 0px 3px 5px -1px $gris;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  border-style: none;
+}
+
+ul li ul li a:hover {
+  padding-left: 10px;
+  border-left: 2px solid $burdeo;
+  transition: all 0.3s ease;
+  color: $burdeo-claro !important;
+}
+
+
+
+ul li ul li a { 
+  transition: all 0.5s ease; 
+}
+
+body {
+  display: inline-block;
+  width: 100%;
+  background-color: $celeste;
+}
+
+.titulo-1{
+  font-size: 46px;
+  color:$burdeo;
+}
+  
+/* CAJITA DEL FORMULARIO */
+
+@mixin caja_formulario($fondo: white){
+    width: 100%;
+    height: 120%;
+    border:1px solid rgba(0, 0, 0, 0.12);
+    box-shadow:rgba(0, 0, 0, 0.22) 0px 2px 6px;
+    background-color: $fondo;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 300%;
+    position: absolute;
+    border-radius: 6px;
+    left: 0;
+    top: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    font-family: $letra-contacto;
+}
+
+.card-front{
+    @include caja_formulario();
+
+    h3{
+        color:#641c34;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+}
+
+.section{
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.card-3d-wrap {
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    height: 400px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    margin-top: 60px;
+}
+.card-3d-wrapper {
+    width: 100%;
+    height: 100%;
+    position:absolute;    
+    top: 0;
+    left: 0;  
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out; 
+}
+
+.center-wrap{
+    position: absolute;
+    width: 100%;
+    padding: 0 35px;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 35px) perspective(100px);
+    z-index: 20;
+    display: block;
+}
+
+.form-group{ 
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/*NAVBAR*/
+
+.logo {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: block;
+  z-index: 100;
+  transition: all 250ms linear;
+}
+.logo img {
+  height: 100px;
+  width: auto;
+  display: block;
+}
+
+.home-icono{
+  filter: invert(15%) sepia(13%) saturate(7498%) hue-rotate(310deg) brightness(93%) contrast(94%);
+}
