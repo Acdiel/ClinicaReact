@@ -56,7 +56,7 @@ const Navbar = () => {
                     <a className="nav-link" style={{ color: 'black' }} href='/#' id="barraprincipal">Noticias</a>
                   </li>
                 </ul>
-                <button type="button" className="btn btn-dark btn-lg">          
+                <button type="button" className="btn_agendarhora">          
               <a href="agendarhora.html" className="card-link" style={{ textDecoration: 'none', color: 'white' }}>Agendar Hora</a>
                 </button>
               </div>

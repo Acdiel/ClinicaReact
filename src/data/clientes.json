@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "AcdielNEW",
+    "correo": "acdielnew@gmail.com",
+    "password": "Acdiel123"
+  },
+  {
+    "nombre": "Gatho",
+    "correo": "gathowow@gmail.com",
+    "password": "Gathowow23"
+  },
+  {
+    "nombre": "Son Goku",
+    "correo": "songoku@gmail.com",
+    "password": "Songoku123"
+  },
+  {
+    "nombre": "Son Gohan",
+    "correo": "songohan@gmail.com",
+    "password": "Songohan23"
+  },
+  {
+    "nombre": "Piccoro",
+    "correo": "piccoro@hotmail.com",
+    "password": "Picorro123"
+  },
+  {
+    "nombre": "Test",
+    "correo": "test321@gmail.com",
+    "password": "Test123"
+  }
+]

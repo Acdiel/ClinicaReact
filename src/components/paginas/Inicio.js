@@ -1,5 +1,5 @@
 import React from 'react';
-import '/clinicav2/src/assets/css/Styles.css';
+import './StylesNew.css';
 import oto3 from '/clinicav2/src/assets/images/oto3.jpg';
 import oto4 from '/clinicav2/src/assets/images/oto4.jpg';
 import otorrinolaringologia from '/clinicav2/src/assets/images/Otorrinolaringología.png';

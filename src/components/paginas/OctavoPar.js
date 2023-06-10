@@ -1,5 +1,5 @@
 import React from 'react'
-import '/clinicav2/src/assets/css/Styles.css';
+import './StylesNew.css'
 import octavopar from '/clinicav2/src/assets/images/8vopar.jpg';
 
 function OctavoPar() {

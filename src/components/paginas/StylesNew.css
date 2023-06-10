@@ -1,0 +1,331 @@
+/* BANNER */
+
+#carouselExampleAutoplaying {
+    display: flex;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  .banner-principal{
+    display: flex;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    
+  
+  }
+  
+  
+  .banner-mobile {
+    display: none !important;
+    display: flex;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover;
+  }
+  
+  
+  .text-banner {
+    position: absolute;
+    left: 9%;
+    border: #641c34;
+    background: #641c34;
+    font-size: 27px;
+    padding: 30px;
+    color: white;
+    font-weight: bold;
+    top: 29%;
+    width: 25%;
+  }
+  
+  .text-banner2{
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 3px;
+    margin:0;
+    position: absolute;
+    top: 35%;
+    left: 9%;
+    
+  }
+  
+  .text-banner-mobile {
+    display: none !important;
+    position: absolute;
+    left: 9%;
+    border: #641c34;
+    background: #641c34;
+    font-size: 20px;
+    padding: 21px;
+    width: 44%;
+    color: white;
+    font-weight: bold;
+    top: 15%;
+  }
+  
+  /*.fondo-azul {
+    background: #641c34;
+    padding: 2% 7% !important;
+  }
+  
+  .fondo-azul p {
+    color: #fff !important;
+  }*/
+  
+  #panel, #fondo-azul {
+    padding: 5px;
+    text-align: center;
+    background-color: #641c34;
+    color: #fff !important;
+    
+  }
+  #panel, #fondo-azul p {
+    color: #fff !important;
+  }
+  
+  
+  #panel {
+    padding: 50px;
+    display: none;
+  }
+  
+  .btn_agendarhora{
+    background-color: #641c34;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s;
+  }
+
+  .btn_agendarhora:hover{
+    background-color: #212529;
+  }
+
+  .listas {
+    margin-left: 20px;
+    list-style: disc;
+  }
+  
+  .listas li {
+    color: black;
+    margin: 10px auto;
+    font-size: 14px;
+  }
+  
+  .roww {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .roww img {
+    width: 40%;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+    opacity: .75;
+    color: #172D4B !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* ICONOS */
+  
+  .fila{
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  
+  .logos{
+    padding: 2em;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    
+  }
+  
+  .logosimg{
+    width: 40%;
+    height: auto;
+  }
+  
+  /*
+  #logosucursal:hover{
+    background-color: #6025cf;
+  
+  } 
+  CON EL HOVER HAGO QUE AL PASAR EL MOUSE ENCIMA DE ALGO SUCEDA ALGO
+  */
+  
+  @media (max-width: 800px){
+    .fila{
+      flex-direction: column;
+    }
+  }
+  
+  
+  
+  
+  
+  /* BREAKPOINTS */
+  
+  
+  @media only screen and (max-width: 480px) {
+    #wrap-articulos #masterlayout .cuerpo:first-child {
+      padding: 0px !important;
+      top: -19px;
+    }
+  }
+  
+  @media (max-width: 413.98px) {
+  
+    #masterlayout .cuerpo:first-child {
+      padding: 0px !important;
+    }
+  
+    .banner-mobile {
+      display: block !important;
+    }
+  
+  
+    .text-banner-mobile {
+      display: block !important;
+      width: 61%;
+    }
+  }
+  
+  
+  @media (min-width: 414px) and (max-width: 575.98px) {
+    .banner-mobile {
+      display: block !important;
+    }
+  
+  
+    .text-banner-mobile {
+      display: block !important;
+      width: 61% !important;
+    }
+  
+  
+  
+  }
+  
+  
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .text-banner {
+      padding: 15px;
+      width: 36%;
+    }
+  }
+  
+  @media (min-width: 767px) and (max-width: 992px) {
+    .text-banner {
+      padding: 20px;
+      width: 31%;
+      font-size: 20px;
+    }
+  
+  
+  }
+  
+  @media (max-width: 1200px) and (min-width: 992px) {
+    .text-banner {
+      padding: 26px;
+      width: 32%;
+    }
+  
+    .caja-color {
+      height: 384px !important;
+    }
+  
+  }
+  
+  @media (max-width: 2300px) and (min-width: 1500px) {
+    .fondo-azul {
+      padding: 2% 20% !important;
+    }
+  }
+  
+  .nav-link{
+    font-family: 'Secular One', sans-serif;
+  }
+  
+  .icon-link{
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(344deg) brightness(104%) contrast(104%);
+  }
+  
+  #barraprincipal{
+    margin-left: 60px !important;
+    border-bottom: 2px solid transparent !important;
+    transition: all .55s ease;
+  
+  }
+  
+  #barraprincipal:hover{
+   border-bottom: 2px solid #641c34 !important;
+  
+  }
+  
+  /* ANIMACION DROPDOWN MENU*/
+  
+  
+  
+  
+  ul li:hover > ul,
+  ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    min-width: 250px;
+    text-align: left;
+    padding-top: 20px;
+    box-shadow: 0px 3px 5px -1px #ccc;
+  }
+  
+  ul li ul li {
+    clear: both;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    border-style: none;
+  }
+  
+  ul li ul li a:hover {
+    padding-left: 10px;
+    border-left: 2px solid #641c34;
+    transition: all 0.3s ease;
+    color: #9d1b46 !important;
+  }
+  
+  
+  
+  ul li ul li a { 
+    transition: all 0.5s ease; 
+  }
+  
+  body {
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .titulo-1{
+    font-size: 46px;
+    color:#641c34;
+  }
+  
+  .bg-body-tertiary {
+    background-color: #641c34;
+    /* otras propiedades */
+  }
+  
+  
