@@ -26,7 +26,7 @@ function Welcome() {
     }, []);
 
     return (
-        <section>
+        <section style={{backgroundColor: 'white'}}>
             <div className="section">
                 <div className="row full-height justify-content-center">
                     <div className="col-12 text-center align-self-center py-5">

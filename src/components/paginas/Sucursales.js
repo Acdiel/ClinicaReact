@@ -4,7 +4,7 @@ import clinica1 from '/clinicav2/src/assets/images/clinica1.jpg';
 function Sucursales() {
 
     return(
-        <section>
+        <section style={{backgroundColor: 'white'}}>
       <br />
       <div className="container">
         <h1 className="clinicas-text">Clinicas</h1>

@@ -1,0 +1,21 @@
+img{
+    border-radius: 8px;
+  }
+
+button{
+    padding: 8px !important;
+    border: none !important;
+    transition: background-color 0.3s ease-in-out !important;
+}
+
+.formulario {
+  width: 300px;
+  margin: 0 auto; /* Centrar horizontalmente el formulario */
+}
+
+.btn{
+  background-color: #641c34 !important;
+  color: white !important;
+}
+
+

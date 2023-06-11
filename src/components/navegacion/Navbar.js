@@ -57,7 +57,7 @@ const Navbar = () => {
                   </li>
                 </ul>
                 <button type="button" className="btn_agendarhora">          
-              <a href="agendarhora.html" className="card-link" style={{ textDecoration: 'none', color: 'white' }}>Agendar Hora</a>
+              <a href="/agendarhora" className="card-link" style={{ textDecoration: 'none', color: 'white' }}>Agendar Hora</a>
                 </button>
               </div>
             </div>

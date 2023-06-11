@@ -10,7 +10,7 @@ import sucursales2 from '/clinicav2/src/assets/images/sucursales2.png';
 
 const Inicio = () => {
     return(
-<section>
+<section style={{backgroundColor: 'white'}}>
         <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
@@ -66,7 +66,7 @@ const Inicio = () => {
       </a>
     </div>
     <div className="logos">
-      <a href="sucursales.html" style={{ textDecoration: 'none', color: 'black' }}>
+      <a href="/sucursales" style={{ textDecoration: 'none', color: 'black' }}>
         <img alt='' className="logosimg" src={sucursales2} />
         <h6 style={{ fontSize: '20px' }}>Sucursales</h6>
         <p style={{ fontSize: '17px' }}>Conoce nuestras clínicas, centros médicos.</p>
