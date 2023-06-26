@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../paginas/UserContext';
 import '../navegacion/Nav.css';
 import clinicanaf3 from '/clinicav2/src/assets/images/CLINICANAF3.png'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faUser} from '@fortawesome/free-solid-svg-icons'; 
+//import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+//import {faUser} from '@fortawesome/free-solid-svg-icons'; 
 
 const Navbar = () => {
+
+  const { user, logout } = useContext(UserContext);
+
+  const handleLogout = () => {
+    logout();
+  };
+  
     return( 
         <header>
         <nav className="navbar " style={{ backgroundColor: '#641c34' }}>
@@ -13,10 +21,15 @@ const Navbar = () => {
               <input className="form-control me-2" type="search" style={{ width: '200px' }} placeholder="Buscar" aria-label="Search" />
             </form>
 
-            <a className="nav-link active" href="/signup">
-            <FontAwesomeIcon icon={faUser} style={{ width: '40px', color:'white', height:'20px' }} />
-            <span style={{ color: '#ffffff', display: 'unset', textTransform: 'none' }}>Iniciar Sesion</span>
-           </a>
+            {user ? (
+            <>
+              <span>Hola, {user.name}</span>
+              <button onClick={handleLogout}>Cerrar sesión</button>
+            </>
+          ) : (
+
+            <a href="/login" style={{ color: '#ffffff', display: 'unset', textTransform: 'none', textDecoration: 'none' }}>Iniciar sesión</a>
+          )}
           </div>
         </nav>
               
@@ -59,6 +72,8 @@ const Navbar = () => {
                 <button type="button" className="btn_agendarhora">          
               <a href="/agendarhora" className="card-link" style={{ textDecoration: 'none', color: 'white' }}>Agendar Hora</a>
                 </button>
+
+            
               </div>
             </div>
           </nav>

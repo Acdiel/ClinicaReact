@@ -9,6 +9,8 @@ import hospitalizacion2 from '/clinicav2/src/assets/images/hospitalizacion2.png'
 import sucursales2 from '/clinicav2/src/assets/images/sucursales2.png';
 
 const Inicio = () => {
+
+
     return(
 <section style={{backgroundColor: 'white'}}>
         <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
@@ -79,10 +81,10 @@ const Inicio = () => {
   <div className="roww">
     <div>
       <br />
-      <h2 className="subtitle-blue">¿Qué es la otorrinolaringología?</h2>
-      <p>Se trata de una especialidad médico-quirúrgica que se encarga de prevenir, diagnosticar y tratar las enfermedades que afectan la boca, garganta, oído, nariz y cuello.</p>
+      <h2 className="subtitle-blue" style={{color: 'black'}}>¿Qué es la otorrinolaringología?</h2>
+      <p style={{color: 'black'}}>Se trata de una especialidad médico-quirúrgica que se encarga de prevenir, diagnosticar y tratar las enfermedades que afectan la boca, garganta, oído, nariz y cuello.</p>
 
-      <p>Nuestros especialistas pueden realizar tratamientos a través del uso de fármacos, así como también de intervenciones quirúrgicas como:</p>
+      <p style={{color: 'black'}}>Nuestros especialistas pueden realizar tratamientos a través del uso de fármacos, así como también de intervenciones quirúrgicas como:</p>
 
       <ul className="listas">
         <li>Amigdalectomía</li>

@@ -28,5 +28,10 @@
     "nombre": "Test",
     "correo": "test321@gmail.com",
     "password": "Test123"
+  },
+  {
+    "nombre": "Acdiel Discord",
+    "correo": "jajaja@hotmail.com",
+    "password": "Discord123"
   }
 ]

@@ -5,6 +5,7 @@ import NavbarDos from './components/navegacion/NavbarDos';
 import Inicio from './components/paginas/Inicio';
 import OctavoPar from './components/paginas/OctavoPar';
 import SignUp from './components/paginas/SignUp';
+import Login from './components/paginas/Login';
 import Contacto from './components/paginas/Contacto';
 import Electrococleografia from './components/paginas/Electrococleografia';
 import LavadoOidos from './components/paginas/LavadoOidos';
@@ -13,28 +14,33 @@ import Welcome from './components/paginas/Welcome';
 import Sucursales from './components/paginas/Sucursales';
 import AgendarHora from './components/paginas/AgendarHora';
 import Reserva from './components/paginas/Reserva';
+import { UserProvider } from './components/paginas/UserContext';
 
 
 function App() {
 
+
   let navbarComponent;
 
-  if (window.location.pathname === '/signup' || window.location.pathname === '/agendarhora') {
+  if (window.location.pathname === '/signup' || window.location.pathname === '/agendarhora' ) {
     navbarComponent = <NavbarDos />;
   } else {
     navbarComponent = <Navbar />;
   }
 
   return (
+    <UserProvider>
     <div className='App'>
 
       <Router>
+      
           {navbarComponent}
       
           <Routes>
             <Route exact path="/" element={<Inicio/>}/>
             <Route exact path="/octavopar" element={<OctavoPar/>}/>
             <Route exact path="/signup" element={<SignUp/>}/>
+            <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/Contacto" element={<Contacto/>}/>
             <Route exact path="/Electrococleografia" element={<Electrococleografia/>}/>
             <Route exact path="/lavadooidos" element={<LavadoOidos/>}/>
@@ -45,9 +51,11 @@ function App() {
             <Route exact path="/reserva" element={<Reserva/>}/>
             
           </Routes>
+          
         </Router>
         
       </div>
+      </UserProvider>
   );
 }
 
