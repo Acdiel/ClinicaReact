@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# PROYECTO CLINICA REACT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El proyecto esta utilizando el framework o libreria react.
 
-## Available Scripts
+## Cambios
 
-In the project directory, you can run:
+Agregué lo solicitado en la EP3.
 
-### `npm start`
+EP3.1:Implementación de las diferentes interfaces gráficas de front-end haciendo uso de algún framework.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+EP3.2 Crear datos a través de colecciones usando JSON
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+EP3.3: Cargar datos usando colecciones JSON creadas.
 
-### `npm test`
+EP3.4: Validación de formularios y mensajes de retroalimentación.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+-En el menu Iniciar Sesion, agregué que al momento de registrarse un usuario, los datos queden guardados en un archivo JSON llamado:
+clientes.json que se encuentra ubicado en src/data/clientes.json (el otro clientes.json que esta ubicado en la carpeta servers se me olvidó borrarlo,
+ya que lo estaba utilizando de prueba. Al igual que el usuarios.json que está ubicado en src), Cree una carpeta server en donde está almacenada la API
+con puerto 3080 y esta conectada al archivo JSON del registro.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Antes, la pestaña welcome tiraba los datos que estaban el los campos de registrarse solo los mostraba porque el usuario escribia en ese campo. 
+Pero ahora está conectado al archivo clientes.JSON así que muestra los datos desde ese archivo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Abro el servidor primero, utilizando `node server.js` para conectarme al puerto 3080 y luego uso `npm start` para abrir la aplicacion React.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-Por ultimo modifique el componente agendarhora el cual ahora cumple una función mas especifica.
