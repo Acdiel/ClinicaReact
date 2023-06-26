@@ -12,7 +12,7 @@ const Inicio = () => {
 
 
     return(
-<section style={{backgroundColor: 'white'}}>
+<section style={{backgroundColor: 'white'}} className='Inicio'>
         <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">

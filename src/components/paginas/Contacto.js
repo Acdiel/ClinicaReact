@@ -70,7 +70,7 @@ function Contacto() {
   };
 
   return (
-    <div className="section" style={{ backgroundColor: 'white' }}>
+    <div className="section" style={{ backgroundColor: 'white', color: 'black' }}>
       <div className="row full-height justify-content-center">
         <div className="col-12 text-center align-self-center py-5">
           <div className="section pb-5 pt-5 pt-sm-2 text-center" style={{paddingRight: 100}}>

@@ -5,7 +5,7 @@ import octavopar from '/clinicav2/src/assets/images/8vopar.jpg';
 function OctavoPar() {
 
     return(
-        <section style={{backgroundColor: 'white'}}>
+        <section style={{backgroundColor: 'white', color:'black'}}>
       <div className="banner">
         <img height="300px" className="banner-principal" src={octavopar} alt="fondo-banner" />
       </div>

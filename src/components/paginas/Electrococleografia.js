@@ -4,7 +4,7 @@ import electrococleografia from '/clinicav2/src/assets/images/Electrococleografi
 function Electrococleografia() {
 
     return(
-        <section style={{backgroundColor: 'white'}}>
+        <section style={{backgroundColor: 'white', color: 'black'}}>
         <div className="banner">
         <img height="200px" className="banner-principal" src={electrococleografia} alt="fondo-banner" />
       </div>

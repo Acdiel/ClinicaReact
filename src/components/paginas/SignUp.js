@@ -25,44 +25,42 @@ function SignUp() {
       },
       messages: {
         username: {
-          required: "Ingresa un nombre",
+          required: 'Ingresa un nombre',
         },
         email: {
-          required: "Ingresa un email",
+          required: 'Ingresa un email',
         },
         password: {
-          required: "Ingresa una contraseña",
+          required: 'Ingresa una contraseña',
         },
       },
-      
     });
 
-
-    $.validator.addMethod("solo_letras", function (value, element) {
+    $.validator.addMethod('solo_letras', function (value, element) {
       return /[a-z," "]/.test(value);
-    }, "Deben ser solo letras");
+    }, 'Deben ser solo letras');
 
     jQuery.extend(jQuery.validator.messages, {
-      required: "Este campo es obligatorio.",
-      remote: "Por favor, corrige este campo.",
-      email: "Por favor, introduce una dirección de correo válida.",
-      url: "Por favor, introduce una URL válida.",
-      date: "Por favor, introduce una fecha válida.",
-      dateISO: "Por favor, introduce una fecha válida (ISO).",
-      number: "Por favor, introduce un número válido.",
-      digits: "Por favor, introduce sólo dígitos.",
-      creditcard: "Por favor, introduce un número de tarjeta de crédito válido.",
-      equalTo: "Por favor, introduce el mismo valor de nuevo.",
-      accept: "Por favor, introduce un valor con una extensión válida.",
-      maxlength: jQuery.validator.format("Por favor, no introduzcas más de {0} caracteres."),
-      minlength: jQuery.validator.format("Por favor, introduce al menos {0} caracteres."),
-      rangelength: jQuery.validator.format("Por favor, introduce un valor entre {0} y {1} caracteres de longitud."),
-      range: jQuery.validator.format("Por favor, introduce un valor entre {0} y {1}."),
-      max: jQuery.validator.format("Por favor, introduce un valor menor o igual a {0}."),
-      min: jQuery.validator.format("Por favor, introduce un valor mayor o igual a {0}.")
+      required: 'Este campo es obligatorio.',
+      remote: 'Por favor, corrige este campo.',
+      email: 'Por favor, introduce una dirección de correo válida.',
+      url: 'Por favor, introduce una URL válida.',
+      date: 'Por favor, introduce una fecha válida.',
+      dateISO: 'Por favor, introduce una fecha válida (ISO).',
+      number: 'Por favor, introduce un número válido.',
+      digits: 'Por favor, introduce sólo dígitos.',
+      creditcard: 'Por favor, introduce un número de tarjeta de crédito válido.',
+      equalTo: 'Por favor, introduce el mismo valor de nuevo.',
+      accept: 'Por favor, introduce un valor con una extensión válida.',
+      maxlength: jQuery.validator.format('Por favor, no introduzcas más de {0} caracteres.'),
+      minlength: jQuery.validator.format('Por favor, introduce al menos {0} caracteres.'),
+      rangelength: jQuery.validator.format('Por favor, introduce un valor entre {0} y {1} caracteres de longitud.'),
+      range: jQuery.validator.format('Por favor, introduce un valor entre {0} y {1}.'),
+      max: jQuery.validator.format('Por favor, introduce un valor menor o igual a {0}.'),
+      min: jQuery.validator.format('Por favor, introduce un valor mayor o igual a {0}.'),
     });
 
-    $.validator.addMethod("passwordCheck", function (value, element) {
+    $.validator.addMethod('passwordCheck', function (value, element) {
       if (this.optional(element)) {
         return true;
       } else if (!/[A-Z]/.test(value)) {
@@ -74,13 +72,15 @@ function SignUp() {
       }
 
       return true;
-    }, "Debe contener al menos una mayúscula, minúscula y números.");
+    }, 'Debe contener al menos una mayúscula, minúscula y números.');
   }, []);
 
-  //REGISTRARSE
+  // REGISTRARSE
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -109,10 +109,47 @@ function SignUp() {
       setUsername('');
       setEmail('');
       setPassword('');
+      setRegistrationSuccess(true);
+      setErrorMessage('');
     } catch (error) {
       console.error(error);
+      if (error.response && error.response.status === 400) {
+        setErrorMessage('Estos datos ya existen.');
+      } else {
+        setErrorMessage('Error al registrar el usuario.');
+      }
     }
   };
+
+  if (registrationSuccess) {
+    return (
+      <div>
+        <div className="section_signup">
+          <div className="container">
+            <div className="row full-height justify-content-center">
+              <div className="col-12 text-center align-self-center py-5">
+                <div className="section pb-5 pt-5 pt-sm-2 text-center">
+                  <div className="card-3d-wrap mx-auto">
+                    <div className="card-3d-wrapper">
+                      <div className="card-front">
+                        <div className="center-wrap">
+                          <div className="section text-center">
+                            <h4 className="mb-4 pb-3">Registro exitoso</h4>
+                            <p>Tu registro se ha realizado correctamente.</p>
+                            <a href="/login" className="btn mt-4">Ir a la página de inicio de sesión</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -134,7 +171,7 @@ function SignUp() {
                                 className="form-style"
                                 placeholder="Nombre"
                                 id="username"
-                                name='username'
+                                name="username"
                                 autoComplete="off"
                                 value={username}
                                 onChange={handleUsernameChange}
@@ -147,7 +184,7 @@ function SignUp() {
                                 className="form-style"
                                 placeholder="Correo"
                                 id="email"
-                                name='email'
+                                name="email"
                                 autoComplete="off"
                                 value={email}
                                 onChange={handleEmailChange}
@@ -160,14 +197,15 @@ function SignUp() {
                                 className="form-style"
                                 placeholder="Contraseña"
                                 id="password"
-                                name='password'
+                                name="password"
                                 autoComplete="off"
                                 value={password}
                                 onChange={handlePasswordChange}
                               />
                               <i className="input-icon uil uil-lock-alt"></i>
                             </div>
-                            <button type="submit" className='btn mt-4'>Registrarse</button>
+                            <button type="submit" className="btn mt-4">Registrarse</button>
+                            {errorMessage && <div style={{color: 'red'}}>{errorMessage}</div>}
                           </div>
                         </div>
                       </div>

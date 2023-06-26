@@ -4,7 +4,7 @@ import nosotros2 from '/clinicav2/src/assets/images/nosotros2.png';
 function NuestraClinica() {
 
     return(
-        <section style={{backgroundColor: 'white'}}>
+        <section style={{backgroundColor: 'white', color:'black'}}>
       {/* BANNER PRINCIPAL */}
       <div className="banner">
         <img className="banner-principal" src={nosotros2} alt="fondo-banner" />

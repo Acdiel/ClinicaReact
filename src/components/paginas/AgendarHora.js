@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Grid } from '@material-ui/core';
+import axios from 'axios';
+import { UserContext } from './UserContext';
 import SeleccionadorHoras from "./SeleccionadorHoras";
 import { DayPicker } from 'react-day-picker';
-import { Link } from 'react-router-dom';
 import { es } from 'date-fns/locale';
 import 'react-day-picker/dist/style.css';
 
@@ -35,6 +36,7 @@ body {
 `;
 
 function AgendarHora() {
+  const { user } = useContext(UserContext); // Obtener el contexto de usuario
   const [selectedDoctor, setSelectedDoctor] = useState('');
   const [showButton, setShowButton] = useState(false);
   const [selected, setSelected] = useState();
@@ -51,8 +53,29 @@ function AgendarHora() {
     { daysOfWeek: [7] }, // Deshabilitar domingos
   ];
 
+  const handleReservarHora = async () => {
+    try {
+      const response = await axios.post('http://localhost:3002/api/agendar-cita', {
+        userId: user.id,
+        username: user.name, // Pasar el ID del usuario
+        fecha: selected.toISOString(), // Convertir la fecha seleccionada a un formato compatible con MySQL
+        hora: selectedHour,
+        doctorId: selectedDoctor,
+      });
+
+      console.log(response.data);
+
+      // Aquí podrías mostrar una notificación o redirigir al usuario a una página de éxito
+      window.location.href = '/exito';
+
+    } catch (error) {
+      console.error(error);
+      // Manejo de errores
+    }
+  };
+
   return (
-    <section className="section">
+    <section className="section" style={{ color: 'black'}}>
       <Grid container>
         <Grid item xs={12} sm={6} md={4} style={{ paddingLeft: 20, paddingTop: 50 }}>
           <div className="AgendarHora">
@@ -110,9 +133,14 @@ function AgendarHora() {
                 </select>
 
                 {showButton && (
-                  <Link to={`/reserva?fecha=${selected}&hora=${selectedHour}&doctor=${selectedDoctor}`}>
-                    <button type="button" style={{ marginTop: 30 }} className="btn btn-primary">Reservar Hora</button>
-                  </Link>
+                  <button
+                    type="button"
+                    style={{ marginTop: 30 }}
+                    className="btn btn-primary"
+                    onClick={handleReservarHora} // Agregar el evento onClick para reservar la hora
+                  >
+                    Reservar Hora
+                  </button>
                 )}
               </div>
             </div>

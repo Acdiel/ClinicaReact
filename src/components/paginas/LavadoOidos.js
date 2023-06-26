@@ -4,7 +4,7 @@ import bannernotas from '/clinicav2/src/assets/images/banner-notas.jpg';
 function LavadoOidos() {
 
     return(
-        <section style={{backgroundColor: 'white'}}>
+        <section style={{backgroundColor: 'white', color: 'black'}}>
       {/* BANNER PRINCIPAL */}
       <div className="banner">
         <img className="banner-principal" src={bannernotas} alt="fondo-banner" />

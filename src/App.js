@@ -15,7 +15,7 @@ import Sucursales from './components/paginas/Sucursales';
 import AgendarHora from './components/paginas/AgendarHora';
 import Reserva from './components/paginas/Reserva';
 import { UserProvider } from './components/paginas/UserContext';
-
+import Exito from './components/paginas/Exito';
 
 function App() {
 
@@ -49,6 +49,7 @@ function App() {
             <Route exact path="/sucursales" element={<Sucursales/>}/>
             <Route exact path="/agendarhora" element={<AgendarHora/>}/>
             <Route exact path="/reserva" element={<Reserva/>}/>
+            <Route exact path="/exito" element={<Exito/>}/>
             
           </Routes>
           

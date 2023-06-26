@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from './UserContext';
+import './signup.css';
 
 function Login() {
   const { login } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
@@ -30,18 +32,18 @@ function Login() {
 
       login(response.data.user);
 
-
       setEmail('');
       setPassword('');
+      setError('');
 
       navigate('/');
     } catch (error) {
       console.error(error);
+      setError('Credenciales inválidas. Por favor, verifique su email y contraseña.');
     }
   };
 
   return (
-
     <div>
       <div className="section">
         <div className="container">
@@ -61,7 +63,7 @@ function Login() {
                                 className="form-style"
                                 placeholder="Email"
                                 id="email"
-                                name='email'
+                                name="email"
                                 autoComplete="off"
                                 value={email}
                                 onChange={handleEmailChange}
@@ -74,20 +76,23 @@ function Login() {
                                 className="form-style"
                                 placeholder="Contraseña"
                                 id="password"
-                                name='password'
+                                name="password"
                                 autoComplete="off"
                                 value={password}
                                 onChange={handlePasswordChange}
                               />
                               <i className="input-icon uil uil-lock-alt"></i>
                             </div>
-                            <button type="submit" className='btn mt-4'>Iniciar Sesión</button>
+                            {error && <p style={{ color: 'red' }}>{error}</p>}
+                            <button type="submit" className="btn mt-4">
+                              Iniciar Sesión
+                            </button>
                           </div>
                           <p className="mb-0 mt-4 text-center">
-                              <a href="/signup" className="link" style={{color: '#641c34'}}>
-                              ¿No tienes cuenta? Registraste Aquí.
-                               </a>
-                             </p>
+                            <a href="/signup" className="link" style={{ color: '#641c34' }}>
+                              ¿No tienes cuenta? Regístrate aquí.
+                            </a>
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -98,8 +103,8 @@ function Login() {
           </form>
         </div>
       </div>
-    </div>  
-    );
-};
+    </div>
+  );
+}
 
 export default Login;
