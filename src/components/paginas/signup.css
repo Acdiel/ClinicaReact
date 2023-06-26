@@ -17,6 +17,7 @@ body{
     color: #c4c3ca;
     background-color: #E6F5F5 !important;
     overflow-x: hidden;
+    
 }
 
 
@@ -284,6 +285,48 @@ h6 span{
     color: #ffeba7 !important;
     box-shadow: 0 8px 24px 0 rgba(16,39,112,.2) !important;
 }
+/*BTN ADMIN*/
+.btn2{  
+    border-radius: 4px !important;
+    height: 44px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    -webkit-transition : all 200ms linear !important;
+    transition: all 200ms linear !important;
+    padding: 0 30px !important;
+    letter-spacing: 1px !important;
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+    -webkit-align-items: center !important;
+    -moz-align-items: center !important;
+    -ms-align-items: center !important;
+    align-items: center !important;
+    -webkit-justify-content: center !important;
+    -moz-justify-content: center !important;
+    -ms-justify-content: center !important;
+    justify-content: center !important;
+    -ms-flex-pack: center !important;
+    text-align: center !important;
+    border: none !important;
+    background-color: #ffeba7 !important;
+    color: #102770 !important;
+    box-shadow: 0 8px 24px 0 rgba(255,235,167,.2) !important;
+}
+.btn2:active,
+.btn2:focus{  
+    background-color: #102770 !important;
+    color: #ffeba7 !important;
+    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2) !important;
+}
+.btn2:hover{  
+    background-color: #102770 !important;
+    color: #ffeba7 !important;
+    box-shadow: 0 8px 24px 0 rgba(16,39,112,.2) !important;
+}
+
+
 .logo {
     position: absolute;
     top: 30px;

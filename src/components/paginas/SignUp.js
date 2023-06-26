@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import $ from 'jquery';
 import 'jquery-validation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 /* global jQuery */
 
@@ -81,6 +83,9 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [captchaValue, setCaptchaValue] = useState('');
+  const [errorMessage2, setErrorMessage2] = useState('');
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -94,9 +99,18 @@ function SignUp() {
     setPassword(e.target.value);
   };
 
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (captchaValue === '') {
+      setErrorMessage('Por favor, verifica que no eres un robot.');
+      return;
+    }
+    
     try {
       const response = await axios.post('http://localhost:3002/api/register', {
         username,
@@ -110,16 +124,18 @@ function SignUp() {
       setEmail('');
       setPassword('');
       setRegistrationSuccess(true);
-      setErrorMessage('');
+      setErrorMessage2('');
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 400) {
-        setErrorMessage('Estos datos ya existen.');
+        setErrorMessage2('Estos datos de usuario ya existen.');
       } else {
-        setErrorMessage('Error al registrar el usuario.');
+        setErrorMessage2('Error al registrar el usuario.');
       }
     }
   };
+
+    
 
   if (registrationSuccess) {
     return (
@@ -161,7 +177,7 @@ function SignUp() {
                 <div className="section pb-5 pt-5 pt-sm-2 text-center">
                   <div className="card-3d-wrap mx-auto">
                     <div className="card-3d-wrapper">
-                      <div className="card-front">
+                      <div className="card-front" style={{ height: '500px'}}>
                         <div className="center-wrap">
                           <div className="section text-center">
                             <h4 className="mb-4 pb-3">Registrarse</h4>
@@ -204,8 +220,15 @@ function SignUp() {
                               />
                               <i className="input-icon uil uil-lock-alt"></i>
                             </div>
+                            <div className='form-group mt-2 recaptcha'>
+                            <ReCAPTCHA
+                            sitekey="6LcQJNImAAAAAOLpmMQv3EETM5I4_3t5KkVPsM6H"
+                            onChange={handleCaptchaChange}
+                            />
+                            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+                            </div> 
                             <button type="submit" className="btn mt-4">Registrarse</button>
-                            {errorMessage && <div style={{color: 'red'}}>{errorMessage}</div>}
+                            {errorMessage2 && <div style={{color: '#efb810'}}>{errorMessage2}</div>}
                           </div>
                         </div>
                       </div>

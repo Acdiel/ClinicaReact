@@ -27,8 +27,16 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem('user');
   };
 
+  const updateUserRole = (role) => {
+    if (user) {
+      setUser({ ...user, role });
+      // Actualizar el estado del usuario en el almacenamiento local
+      localStorage.setItem('user', JSON.stringify({ ...user, role }));
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout, updateUserRole }}>
       {children}
     </UserContext.Provider>
   );

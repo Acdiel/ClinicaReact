@@ -16,16 +16,19 @@ import AgendarHora from './components/paginas/AgendarHora';
 import Reserva from './components/paginas/Reserva';
 import { UserProvider } from './components/paginas/UserContext';
 import Exito from './components/paginas/Exito';
+import NafAdmin from './components/paginas/NafAdmin';
 
 function App() {
 
 
   let navbarComponent;
 
-  if (window.location.pathname === '/signup' || window.location.pathname === '/agendarhora' ) {
+  if (window.location.pathname === '/signup' || window.location.pathname === '/agendarhora') {
     navbarComponent = <NavbarDos />;
-  } else {
+  } else if (window.location.pathname !== '/nafadmin') {
     navbarComponent = <Navbar />;
+  } else {
+    navbarComponent = null; // No se mostrará ninguna barra de navegación
   }
 
   return (
@@ -50,7 +53,8 @@ function App() {
             <Route exact path="/agendarhora" element={<AgendarHora/>}/>
             <Route exact path="/reserva" element={<Reserva/>}/>
             <Route exact path="/exito" element={<Exito/>}/>
-            
+            <Route exact path="/nafadmin" element={<NafAdmin/>}/>
+
           </Routes>
           
         </Router>

@@ -26,6 +26,7 @@ connection.connect((error) => {
 
 app.post('/api/register', (req, res) => {
   const { username, email, password } = req.body;
+  const rol = 2; // Valor del rol para los usuarios normales
 
   connection.query(
     'SELECT * FROM usuarios WHERE username = ? OR email = ?',
@@ -44,8 +45,8 @@ app.post('/api/register', (req, res) => {
               res.status(500).json({ error: 'Error al registrar el usuario' });
             } else {
               connection.query(
-                'INSERT INTO usuarios (username, email, password) VALUES (?, ? ,?)',
-                [username, email, hash],
+                'INSERT INTO usuarios (username, email, password, rol) VALUES (?, ? ,?, ?)',
+                [username, email, hash, rol], // Agregar el valor del rol en la consulta
                 (error, results) => {
                   if (error) {
                     console.error('Error al registrar el usuario:', error);
@@ -62,6 +63,7 @@ app.post('/api/register', (req, res) => {
     }
   );
 });
+
 
 app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
@@ -130,6 +132,38 @@ app.get('/api/horas-agendadas/:username', (req, res) => {
   );
 });
 
+app.get('/api/user-role/:username', (req, res) => {
+  const username = req.params.username;
+
+  connection.query(
+    'SELECT rol FROM usuarios WHERE username = ?',
+    [username],
+    (error, results) => {
+      if (error) {
+        console.error('Error al obtener el rol del usuario:', error);
+        res.status(500).json({ error: 'Error al obtener el rol del usuario' });
+      } else {
+        const isAdmin = results[0].rol === 1;
+        res.status(200).json({ isAdmin });
+      }
+    }
+  );
+});
+
+app.get('/api/users', (req, res) => {
+  connection.query('SELECT * FROM usuarios', (error, results) => {
+    if (error) {
+      console.error('Error al obtener los usuarios:', error);
+      res.status(500).json({ error: 'Error al obtener los usuarios' });
+    } else {
+      res.status(200).json({ users: results });
+    }
+  });
+});
+
+
+
+
 app.put('/api/update-password', (req, res) => {
   const { username, newPassword } = req.body;
 
@@ -169,6 +203,19 @@ app.delete('/api/delete-account', (req, res) => {
       }
     }
   );
+});
+
+app.delete('/api/delete-user/:userId', (req, res) => {
+  const userId = req.params.userId;
+
+  connection.query('DELETE FROM usuarios WHERE id = ?', [userId], (error, results) => {
+    if (error) {
+      console.error('Error al eliminar el usuario:', error);
+      res.status(500).json({ error: 'Error al eliminar el usuario' });
+    } else {
+      res.status(200).json({ message: 'Usuario eliminado exitosamente' });
+    }
+  });
 });
 
 const port = 3002;

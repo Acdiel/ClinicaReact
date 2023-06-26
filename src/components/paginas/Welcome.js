@@ -13,8 +13,10 @@ function Welcome() {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate(); // Hook useNavigate para redirigir
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
+
+    useEffect(() => {
     const fetchHorasAgendadas = async () => {
       try {
         const response = await axios.get(`http://localhost:3002/api/horas-agendadas/${user.name}`);
@@ -23,9 +25,19 @@ function Welcome() {
         console.error(error);
       }
     };
-
+  
+    const checkUserRole = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3002/api/user-role/${user.name}`);
+        setIsAdmin(response.data.isAdmin);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
     if (user && user.name) {
       fetchHorasAgendadas();
+      checkUserRole();
     }
   }, [user]);
 
@@ -134,7 +146,7 @@ function Welcome() {
               
                 
                           
-              <div className="card-front" style={{marginTop: 250, width: '250px', height: '100px', marginLeft: 80}}>
+              <div className="card-front" style={{marginTop: 220, width: '250px', height: '100px', marginLeft: 80}}>
                       <div className="section text-center" >
                       <button type="button" className='btn mt-4' onClick={handleDeleteAccount}>
                               Eliminar cuenta
@@ -142,6 +154,18 @@ function Welcome() {
                             {deleteSuccess && <div>Cuenta eliminada exitosamente</div>}
                       </div>
                 </div>
+                
+                {isAdmin && (
+                <div className="card-front" style={{marginTop: 350, width: '250px', height: '100px', marginLeft: 80}}>
+                      <div className="section text-center" >
+                      <a href='/nafadmin' style={{ textDecoration: 'none' }}>
+                      <button type="button" className='btn2 mt-4'>
+                              Admin Menu
+                      </button>
+                      </a>
+                      </div>
+                </div>
+                )}
             </div>
           </div>
         </div>
