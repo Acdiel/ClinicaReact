@@ -55,6 +55,14 @@ function AgendarHora() {
 
   const handleReservarHora = async () => {
     try {
+      const horaReservada = await checkHoraReservada();
+
+      if (horaReservada) {
+        // La hora ya está reservada, mostrar una notificación o realizar alguna otra acción
+        console.log('La hora ya está reservada');
+        return;
+      }
+      
       const response = await axios.post('http://localhost:3002/api/agendar-cita', {
         userId: user.id,
         username: user.name, // Pasar el ID del usuario
@@ -65,9 +73,26 @@ function AgendarHora() {
 
       console.log(response.data);
 
-      // Aquí podrías mostrar una notificación o redirigir al usuario a una página de éxito
+      // Redirigo al usuario al componente éxito
       window.location.href = '/exito';
 
+    } catch (error) {
+      console.error(error);
+      // Manejo de errores
+    }
+  };
+
+  const checkHoraReservada = async () => {
+    try {
+      const response = await axios.get('http://localhost:3002/api/hora-reservada', {
+        params: {
+          fecha: selected.toISOString(),
+          hora: selectedHour,
+          doctorId: selectedDoctor,
+        },
+      });
+  
+      return response.data.isHoraReservada;
     } catch (error) {
       console.error(error);
       // Manejo de errores

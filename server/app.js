@@ -99,11 +99,11 @@ app.post('/api/login', (req, res) => {
 });
 
 app.post('/api/agendar-cita', (req, res) => {
-  const { user_id, username, fecha, hora, doctorId } = req.body;
+  const { id, username, fecha, hora, doctorId } = req.body;
 
   connection.query(
-    'INSERT INTO historial_medico (user_id, username, fecha, hora, doctor_id) VALUES (?, ?, ?, ?, ?)',
-    [user_id, username, fecha, hora, doctorId],
+    'INSERT INTO historial_medico (id, username, fecha, hora, doctor_id) VALUES (?, ?, ?, ?, ?)',
+    [id, username, fecha, hora, doctorId],
     (error, results) => {
       if (error) {
         console.error('Error al guardar la cita en el historial médico:', error);
@@ -161,7 +161,34 @@ app.get('/api/users', (req, res) => {
   });
 });
 
+app.get('/api/hora-reservada', (req, res) => {
+  const { fecha, hora, doctorId } = req.query;
 
+  connection.query(
+    'SELECT * FROM historial_medico WHERE fecha = ? AND hora = ? AND doctor_id = ?',
+    [fecha, hora, doctorId],
+    (error, results) => {
+      if (error) {
+        console.error('Error al verificar la hora reservada:', error);
+        res.status(500).json({ error: 'Error al verificar la hora reservada' });
+      } else {
+        const isHoraReservada = results.length > 0;
+        res.status(200).json({ isHoraReservada });
+      }
+    }
+  );
+});
+
+app.get('/api/medical-history', (req, res) => {
+  connection.query('SELECT * FROM historial_medico', (error, results) => {
+    if (error) {
+      console.error('Error al obtener el historial médico:', error);
+      res.status(500).json({ error: 'Error al obtener el historial médico' });
+    } else {
+      res.status(200).json({ medicalHistory: results });
+    }
+  });
+});
 
 
 app.put('/api/update-password', (req, res) => {
@@ -205,10 +232,10 @@ app.delete('/api/delete-account', (req, res) => {
   );
 });
 
-app.delete('/api/delete-user/:userId', (req, res) => {
-  const userId = req.params.userId;
+app.delete('/api/delete-user/:userID', (req, res) => {
+  const userID = req.params.userID;
 
-  connection.query('DELETE FROM usuarios WHERE id = ?', [userId], (error, results) => {
+  connection.query('DELETE FROM usuarios WHERE ID = ?', [userID], (error, results) => {
     if (error) {
       console.error('Error al eliminar el usuario:', error);
       res.status(500).json({ error: 'Error al eliminar el usuario' });
@@ -217,6 +244,21 @@ app.delete('/api/delete-user/:userId', (req, res) => {
     }
   });
 });
+
+app.delete('/api/delete-medical-record/:recordid', (req, res) => {
+  const recordid = req.params.recordid;
+
+  connection.query('DELETE FROM historial_medico WHERE id = ?', [recordid], (error, results) => {
+    if (error) {
+      console.error('Error al eliminar el registro del historial médico:', error);
+      res.status(500).json({ error: 'Error al eliminar el registro del historial médico' });
+    } else {
+      res.status(200).json({ message: 'Registro del historial médico eliminado exitosamente' });
+    }
+  });
+});
+
+
 
 const port = 3002;
 
